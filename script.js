@@ -1,5 +1,6 @@
 const myLibrary = [];
 
+// Book Object Constructor
 function Book(title, author, pages, status) {
     this.title = title;
     this.author = author;
@@ -16,10 +17,23 @@ function addToLibrary(book) {
     myLibrary.push(book);
 }
 
+// Dummy books
 let Book1 = new Book("Book1", "Author1", 345, "Not read yet");
 addToLibrary(Book1);
-
-let Book2 = new Book("Book2", "Author2", 35, "Completed");
+let Book2 = new Book("Book2", "Author2", 35, "Read");
 addToLibrary(Book2);
 
-console.log(myLibrary);
+
+let cardContainer = document.querySelector('.card-container') ;
+
+myLibrary.forEach((book) => {
+    cardContainer.innerHTML += `
+        <div class="card">
+            <p class="title">"${book.title}"</p>
+            <p class="author">${book.author}</p>
+            <p class="pages">${book.pages} pages</p>
+            <button class="status-button not-read">${book.status}</button>
+            <button class="remove-button">Remove</button>
+        </div>
+    `
+})
