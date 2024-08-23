@@ -19,9 +19,9 @@ function addToLibrary(book) {
 
 // Dummy books
 let Book1 = new Book("Book1", "Author1", 345, "Not read yet");
-addToLibrary(Book1);
+// addToLibrary(Book1);
 let Book2 = new Book("Book2", "Author2", 35, "Read");
-addToLibrary(Book2);
+// addToLibrary(Book2);
 
 let cardContainer = document.querySelector('.card-container') ;
 
@@ -38,3 +38,14 @@ myLibrary.forEach((book) => {
     `
 
 })
+
+// Show dialog 
+const dialog = document.querySelector("dialog");
+const addBookButton = document.querySelector('.add-book-button');
+addBookButton.addEventListener('click', () => dialog.showModal());
+
+// Close dialog
+const dialogBox = document.querySelector(".dialog-box");
+const dialogBoxDiv = document.querySelector(".dialog-div");
+dialogBox.addEventListener('click', () => dialog.close());
+dialogBoxDiv.addEventListener('click', (event) => event.stopPropagation());
