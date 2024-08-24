@@ -18,6 +18,24 @@ function addToLibrary(book) {
     myLibrary.push(book);
 }
 
+function createBookCard() {
+    const cardContainer = document.querySelector('.card-container') ;
+    cardContainer.innerHTML = '';
+
+    myLibrary.forEach((book) => {
+        const statusCssClass = book.status == true ? "read" : "not-read";
+        cardContainer.innerHTML += `
+            <div class="card">
+                <p class="title">"${book.title}"</p>
+                <p class="author">${book.author}</p>
+                <p class="pages">${book.pages} pages</p>
+                <button class="status-button ${statusCssClass}">${book.status==true ? "Read": "Not read yet"}</button>
+                <button class="remove-button">Remove</button>
+            </div>
+        `
+    })
+}
+
 // Show dialog
 const bodyElement = document.querySelector('body'); 
 const dialogBox = document.querySelector(".dialog-box");
@@ -50,24 +68,19 @@ dialogForm.addEventListener('submit', (event)=> {
 
     let newBook = new Book(title, author, pages, readingStatus);
     addToLibrary(newBook);
-    dialogForm.reset();
-
+    
     // Create book cards
-    const cardContainer = document.querySelector('.card-container') ;
-    cardContainer.innerHTML = '';
-
-    myLibrary.forEach((book) => {
-        const statusCssClass = book.status == true ? "read" : "not-read";
-        cardContainer.innerHTML += `
-            <div class="card">
-                <p class="title">"${book.title}"</p>
-                <p class="author">${book.author}</p>
-                <p class="pages">${book.pages} pages</p>
-                <button class="status-button ${statusCssClass}">${book.status==true ? "Read": "Not read yet"}</button>
-                <button class="remove-button">Remove</button>
-            </div>
-        `
-    })
-
+    createBookCard();
+    
+    dialogForm.reset();
     closeDialogBox();
+});
+
+
+const bookCardsContainer = document.querySelector(".card-container");
+bookCardsContainer.addEventListener('click', function(event) {
+    if (event.target.classList.contains('remove-button')) {
+        const cardDiv = event.target.closest('.card');
+        cardDiv.remove();
+    }
 });
