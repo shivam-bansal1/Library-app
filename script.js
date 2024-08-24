@@ -76,11 +76,26 @@ dialogForm.addEventListener('submit', (event)=> {
     closeDialogBox();
 });
 
-
+// Remove book and change reading status
 const bookCardsContainer = document.querySelector(".card-container");
 bookCardsContainer.addEventListener('click', function(event) {
+    // Remove book
     if (event.target.classList.contains('remove-button')) {
         const cardDiv = event.target.closest('.card');
         cardDiv.remove();
+    }
+
+    // Change Reading Status
+    if (event.target.classList.contains('status-button')) {
+        console.log(event.target.classList);
+        const readingStatusButton = event.target.closest('.status-button');
+        if(event.target.classList.contains('not-read')) {
+            readingStatusButton.classList = 'status-button read';
+            readingStatusButton.textContent = 'Read';
+        }
+        else if(event.target.classList.contains('read')) {
+            readingStatusButton.classList = 'status-button not-read';
+            readingStatusButton.textContent = 'Not read yet';
+        }
     }
 });
