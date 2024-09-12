@@ -1,28 +1,29 @@
-const myLibrary = [];
+// Book Class
+class Book {
+    constructor(title, author, pages, status) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.status = status;
+    }
 
-// Book Object Constructor
-function Book(title, author, pages, status) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;
+    static myLibrary = [];
 
-    return {title : this.title,
-            author : this.author,
-            pages : this.pages,
-            status : this.status 
-        }
-}
-
-function addToLibrary(book) {
-    myLibrary.push(book);
+    addToLibrary(){
+        Book.myLibrary.push({
+            title: this.title,
+            author: this.author, 
+            pages: this.pages, 
+            status: this.status
+        });
+    }
 }
 
 function createBookCard() {
     const cardContainer = document.querySelector('.card-container') ;
     cardContainer.innerHTML = '';
 
-    myLibrary.forEach((book) => {
+    Book.myLibrary.forEach((book) => {
         const statusCssClass = book.status == true ? "read" : "not-read";
         cardContainer.innerHTML += `
             <div class="card">
@@ -67,7 +68,7 @@ dialogForm.addEventListener('submit', (event)=> {
     const readingStatus = document.querySelector('.reading-status').checked;
 
     let newBook = new Book(title, author, pages, readingStatus);
-    addToLibrary(newBook);
+    newBook.addToLibrary();
     
     // Create book cards
     createBookCard();
