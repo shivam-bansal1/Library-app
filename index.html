@@ -1,45 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library App</title>
 
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
     <div class="container">
-        <div class="header">
-            <div class="logo">library</div>
-            <button class="login-button">Log in</button>
-        </div>
-    
-        <div class="main">
-            <div class="add-button-container">
-                <dialog class="dialog-box">
-                    <div class="dialog-div">
-                        <form class="dialog-form">
-                            <p class="dialog-title">Add new book</p>
-                            
-                            <input type="text" placeholder="Title" class="dialog-book-title">
-                            <input type="text" placeholder="Author" class="dialog-book-author">
-                            <input type="number" placeholder="Pages" class="dialog-book-pages">
-                            <div class="status-checkbox">
-                                Have you read it?
-                                <input type="checkbox" id="check" class="reading-status">
-                            </div>
-                            <button type="submit" class="submit-book-button">Submit</button>
-                        </form>
-                    </div>
-                </dialog>
+      <div class="header">
+        <div class="logo">library</div>
+        <button class="login-button">Log in</button>
+      </div>
 
-                <button class="add-book-button">+ Add book</button>
+      <div class="main">
+        <div class="add-button-container">
+          <dialog class="dialog-box">
+            <div class="dialog-div">
+              <form class="dialog-form" novalidate>
+                <p class="dialog-title">Add new book</p>
+
+                <p class="title">
+                  <input
+                    type="text"
+                    placeholder="Title"
+                    class="dialog-book-title"
+                    minlength="3"
+                    required
+                    maxlength="20"
+                  />
+                  <span
+                    class="error"
+                    id="title-error"
+                    aria-live="polite"
+                  ></span>
+                </p>
+                <p class="author">
+                  <input
+                    type="text"
+                    placeholder="Author"
+                    class="dialog-book-author"
+                    required
+                    minlength="3"
+                    maxlength="20"
+                  />
+                  <span
+                    class="error"
+                    id="author-error"
+                    aria-live="polite"
+                  ></span>
+                </p>
+                <p class="pages">
+                  <input
+                    type="number"
+                    placeholder="Pages"
+                    class="dialog-book-pages"
+                    required
+                  />
+                  <span
+                    class="error"
+                    id="pages-error"
+                    aria-live="polite"
+                  ></span>
+                </p>
+                <div class="status-checkbox">
+                  Have you read it?
+                  <input type="checkbox" id="check" class="reading-status" />
+                </div>
+                <button type="submit" class="submit-book-button">Submit</button>
+                <span
+                  id="missing-field-error"
+                  class="error"
+                  aria-live="polite"
+                ></span>
+              </form>
             </div>
-            <div class="card-container">
-            </div>
+          </dialog>
+
+          <button class="add-book-button">+ Add book</button>
         </div>
+        <div class="card-container"></div>
+      </div>
     </div>
-    
-    <script src="./script.js"></script>
-</body>
+
+    <script src="./script.js" type="module"></script>
+  </body>
 </html>
