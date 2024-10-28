@@ -57,8 +57,8 @@ function closeDialogBox() {
   dialogBox.close();
   bodyElement.style.opacity = 1;
 }
-dialogBox.addEventListener("click", closeDialogBox);
-dialogBoxDiv.addEventListener("click", (event) => event.stopPropagation());
+// dialogBox.addEventListener("click", closeDialogBox);
+// dialogBoxDiv.addEventListener("click", (event) => event.stopPropagation());
 
 function addNewBook() {
   // Submit form to add new book

@@ -10,7 +10,7 @@ export function validateField(className, id) {
       if (element.validity.valueMissing) {
         error.textContent = `Value missing for ${event.target.placeholder}`;
       } else if (element.validity.tooShort) {
-        error.textContent = `${event.target.placeholder} should atleast be ${element.minLength} characters; you entered ${element.value.length}.`;
+        error.textContent = `Atleast ${element.minLength} characters required`;
       }
     }
   });

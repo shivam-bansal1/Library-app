@@ -21,7 +21,7 @@
               <form class="dialog-form" novalidate>
                 <p class="dialog-title">Add new book</p>
 
-                <p class="title">
+                <p class="fields">
                   <input
                     type="text"
                     placeholder="Title"
@@ -36,7 +36,7 @@
                     aria-live="polite"
                   ></span>
                 </p>
-                <p class="author">
+                <p class="fields">
                   <input
                     type="text"
                     placeholder="Author"
@@ -51,7 +51,7 @@
                     aria-live="polite"
                   ></span>
                 </p>
-                <p class="pages">
+                <p class="fields">
                   <input
                     type="number"
                     placeholder="Pages"
@@ -68,12 +68,16 @@
                   Have you read it?
                   <input type="checkbox" id="check" class="reading-status" />
                 </div>
-                <button type="submit" class="submit-book-button">Submit</button>
-                <span
-                  id="missing-field-error"
-                  class="error"
-                  aria-live="polite"
-                ></span>
+                <p class="fields">
+                  <button type="submit" class="submit-book-button">
+                    Submit
+                  </button>
+                  <span
+                    id="missing-field-error"
+                    class="error"
+                    aria-live="polite"
+                  ></span>
+                </p>
               </form>
             </div>
           </dialog>
